@@ -14,7 +14,11 @@ function compact(size){
   return this.filter(x=>x)
 }
 
-arrfuncs=['transpose','chunk','compact']
+function cat(){
+  this.push(...arguments)
+}
+
+arrfuncs=['transpose','chunk','compact','cat']
 arrfuncs.forEach(func=>eval('Array.prototype.'+func+'='+func))
 
 
@@ -22,3 +26,7 @@ arrfuncs.forEach(func=>eval('Array.prototype.'+func+'='+func))
 console.log(JSON.stringify([[1,2,3],[1,2,3],[1,2,3]].transpose()))
 console.log(JSON.stringify([1,2,3,4,5].chunk(2)))
 console.log(JSON.stringify([1,2,3,false,''].compact()))
+a=[1,2,3]
+a.cat(4,[5])
+console.log(JSON.stringify(a))
+a.pop()
