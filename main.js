@@ -18,15 +18,22 @@ function cat(){
   this.push(...arguments)
 }
 
-arrfuncs=['transpose','chunk','compact','cat']
+function diff(arr2){
+  return this.filter(x=>arr2.indexOf(x)<0)
+}
+
+arrfuncs=['transpose','chunk','compact','cat','diff']
 arrfuncs.forEach(func=>eval('Array.prototype.'+func+'='+func))
 
 
 // Tests below
-console.log(JSON.stringify([[1,2,3],[1,2,3],[1,2,3]].transpose()))
-console.log(JSON.stringify([1,2,3,4,5].chunk(2)))
-console.log(JSON.stringify([1,2,3,false,''].compact()))
+
+const print=x=>console.log(JSON.stringify(x))
+print([[1,2,3],[1,2,3],[1,2,3]].transpose())
+print([1,2,3,4,5].chunk(2))
+print([1,2,3,false,''].compact())
 a=[1,2,3]
 a.cat(4,[5])
-console.log(JSON.stringify(a))
+print(a)
 a.pop()
+print(a.diff([1,2,3]))
