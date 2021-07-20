@@ -10,9 +10,15 @@ function chunk(size){
   return Array(Math.ceil(this.length/size)).fill().map((_,i)=>i*size).map(begin=> this.slice(begin,begin+size))
 }
 
+function compact(size){
+  return this.filter(x=>x)
+}
+
 Array.prototype.transpose=transpose
 Array.prototype.chunk=chunk
+Array.prototype.compact=compact
 
 // Tests below
 console.log(JSON.stringify([[1,2,3],[1,2,3],[1,2,3]].transpose()))
 console.log(JSON.stringify([1,2,3,4,5].chunk(2)))
+console.log(JSON.stringify([1,2,3,false,''].compact()))
