@@ -22,7 +22,15 @@ function diff(arr2){
   return this.filter(x=>arr2.indexOf(x)<0)
 }
 
-arrfuncs=['transpose','chunk','compact','cat','diff']
+function drop(n){
+  return this.slice(n)
+}
+
+function dropr(n){
+  return this.slice().reverse().slice(n).reverse()
+}
+
+arrfuncs=['transpose','chunk','compact','cat','diff','drop','dropr']
 arrfuncs.forEach(func=>eval('Array.prototype.'+func+'='+func))
 
 
@@ -37,3 +45,4 @@ a.cat(4,[5])
 print(a)
 a.pop()
 print(a.diff([1,2,3]))
+print(a.dropr(2))
