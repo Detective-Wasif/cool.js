@@ -14,9 +14,9 @@ function compact(size){
   return this.filter(x=>x)
 }
 
-Array.prototype.transpose=transpose
-Array.prototype.chunk=chunk
-Array.prototype.compact=compact
+arrfuncs=['transpose','chunk','compact']
+arrfuncs.forEach(func=>eval('Array.prototype.'+func+'='+func))
+
 
 // Tests below
 console.log(JSON.stringify([[1,2,3],[1,2,3],[1,2,3]].transpose()))
