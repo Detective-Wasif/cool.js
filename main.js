@@ -38,7 +38,15 @@ function dropwhile(func){
   return arr
 }
 
-arrfuncs=['transpose','chunk','compact','cat','diff','drop','dropr','dropwhile']
+function droprwhile(func){
+  arr=this.slice().reverse()
+  while(arr.length&&!func(arr[0])){
+    arr=arr.slice(1)
+  }
+  return arr.reverse()
+}
+
+arrfuncs=['transpose','chunk','compact','cat','diff','drop','dropr','dropwhile','droprwhile']
 arrfuncs.forEach(func=>eval('Array.prototype.'+func+'='+func))
 
 
@@ -54,4 +62,5 @@ print(a)
 a.pop()
 print(a.diff([1,2,3]))
 print(a.dropr(2))
-print(a.dropwhile(n=>n>=3))
+a=[1,2,3,4]
+print(a.droprwhile(n=>n>=3))
